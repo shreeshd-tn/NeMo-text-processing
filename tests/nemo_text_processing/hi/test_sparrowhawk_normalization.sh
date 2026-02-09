@@ -76,15 +76,15 @@ testTNMoney() {
   runtest $input
 }
 
-#testTNOrdinal() {
-#  input=$PROJECT_DIR/hi/data_text_normalization/test_cases_ordinal.txt
-#  runtest $input
-#}
+testTNOrdinal() {
+ input=$PROJECT_DIR/hi/data_text_normalization/test_cases_ordinal.txt
+ runtest $input
+}
 
-#testTNTelephone() {
-#  input=$PROJECT_DIR/en/data_text_normalization/test_cases_telephone.txt
-#  runtest $input
-#}
+testTNTelephone() {
+ input=$PROJECT_DIR/hi/data_text_normalization/test_cases_telephone.txt
+ runtest $input
+}
 
 testTNTime() {
   input=$PROJECT_DIR/hi/data_text_normalization/test_cases_time.txt
@@ -106,10 +106,10 @@ testTNWord() {
  runtest $input
 }
 
-#testTNAddress() {
-#  input=$PROJECT_DIR/en/data_text_normalization/test_cases_address.txt
-#  runtest $input
-#}
+testTNAddress() {
+ input=$PROJECT_DIR/hi/data_text_normalization/test_cases_address.txt
+ runtest $input
+}
 
 #testTNMath() {
 #  input=$PROJECT_DIR/en/data_text_normalization/test_cases_math.txt
