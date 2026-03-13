@@ -1,4 +1,4 @@
-# Copyright (c) 2024, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2026, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ from nemo_text_processing.text_normalization.hi.verbalizers.ordinal import Ordin
 from nemo_text_processing.text_normalization.hi.verbalizers.telephone import TelephoneFst
 from nemo_text_processing.text_normalization.hi.verbalizers.time import TimeFst
 from nemo_text_processing.text_normalization.hi.verbalizers.whitelist import WhiteListFst
-
+from nemo_text_processing.text_normalization.hi.verbalizers.electronic import ElectronicFst
 
 class VerbalizeFst(GraphFst):
     """
@@ -66,6 +66,9 @@ class VerbalizeFst(GraphFst):
         telephone = TelephoneFst()
         telephone_graph = telephone.fst
 
+        electronic = ElectronicFst()
+        electronic_graph = electronic.fst
+
         whitelist_graph = WhiteListFst(deterministic=deterministic).fst
 
         graph = (
@@ -79,6 +82,7 @@ class VerbalizeFst(GraphFst):
             | ordinal_graph
             | whitelist_graph
             | telephone_graph
+            | electronic_graph
         )
 
         self.fst = graph
