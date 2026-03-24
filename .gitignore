@@ -175,7 +175,3 @@ examples/neural_graphs/*.yml
 .hydra/
 nemo_experiments/
 *.swp
-NeMo-text-processing/
-hi_tn_grammars_cased/
-nemo_env/
-pynini_export.py

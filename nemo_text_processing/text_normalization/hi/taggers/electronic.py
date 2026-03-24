@@ -53,11 +53,11 @@ class ElectronicFst(GraphFst):
                 pynini.string_file(get_abs_path("data/electronic/domain.tsv")) + insert_space,
                 -1.0,
             )
-            | pynini.closure(digit, 0) + letter + pynini.closure(alnum | hyphen, 0)
+            | pynini.closure(digit, 0) + letter + pynini.closure(alnum | hyphen, 0) + (letter | digit)
         )
         domain = domain_word + pynini.closure(dot + domain_word, 1)
 
-        octet = pynini.closure(digit, 1)
+        octet = pynini.closure(digit, 1, 3)
         ip_address = octet + dot + octet + dot + octet + dot + octet
 
         username = pynini.closure(alnum | dot | hyphen | underscore, 1)

@@ -16,11 +16,20 @@ import pynini
 from pynini.lib import pynutil
 from nemo_text_processing.text_normalization.hi.graph_utils import GraphFst, NEMO_NOT_QUOTE
 
-
 class ElectronicFst(GraphFst):
+    """
+    Finite state transducer for verbalizing electronic data, e.g.
+        electronic { value: "एच टी टी पी एस कोलन फॉरवर्ड स्लैश फॉरवर्ड स्लैश एन ए ए एम डॉट कॉम" } -> https://naam.com
+        electronic { value: "एच ई एल एल ओ एक दो तीन ऐट ओ यू टी एल ओ ओ के डॉट कॉम" } -> hello123@outlook.com
+        electronic { value: "ए एल आई आई हाइफ़न पी ए ए टी टी आई एल डॉट कॉम" } -> alii-paattil.com
+        electronic { value: "ए ए एस सी डॉट एन आई सी डॉट इन फॉरवर्ड स्लैश" } -> aasc.nic.in/
+
+    Args:
+        deterministic: if True will provide a single transduction option,
+            for False multiple options are generated (used for audio-based normalization)
+    """
 
     def __init__(self, deterministic=True):
-
         super().__init__(name="electronic", kind="verbalize", deterministic=deterministic)
 
         value = pynutil.delete('value: "') + pynini.closure(NEMO_NOT_QUOTE, 1) + pynutil.delete('"')
